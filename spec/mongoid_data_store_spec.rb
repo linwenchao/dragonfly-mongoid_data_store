@@ -1,17 +1,18 @@
 # encoding: utf-8
 require 'spec_helper'
-require 'dragonfly/mongo_data_store'
+require 'dragonfly/mongoid_data_store'
 require 'dragonfly/spec/data_store_examples'
-require 'mongo'
+#require 'mongo'
+require 'mongoid-grid_fs'
 
-describe Dragonfly::MongoDataStore do
+describe Dragonfly::MongoidDataStore do
 
   let(:app) { Dragonfly.app }
   let(:content) { Dragonfly::Content.new(app, "Pernumbucano") }
   let(:new_content) { Dragonfly::Content.new(app) }
 
   before(:each) do
-    @data_store = Dragonfly::MongoDataStore.new :database => 'dragonfly_test'
+    @data_store = Dragonfly::MongoidDataStore.new :database => 'dragonfly_test'
   end
 
   describe "configuring the app" do
@@ -19,7 +20,7 @@ describe Dragonfly::MongoDataStore do
       app.configure do
         datastore :mongo
       end
-      app.datastore.should be_a(Dragonfly::MongoDataStore)
+      app.datastore.should be_a(Dragonfly::MongoidDataStore)
     end
   end
 
@@ -55,14 +56,14 @@ describe Dragonfly::MongoDataStore do
     end
 
     it "should allow sharing the connection" do
-      data_store = Dragonfly::MongoDataStore.new :connection => @connection
+      data_store = Dragonfly::MongoidDataStore.new :connection => @connection
       @connection.should_receive(:db).and_return(db=double)
       data_store.db.should == db
     end
 
     it "should allow sharing the db" do
       db = @connection.db('dragonfly_test_yo')
-      data_store = Dragonfly::MongoDataStore.new :db => db
+      data_store = Dragonfly::MongoidDataStore.new :db => db
       data_store.grid.instance_eval{@db}.should == db # so wrong
     end
   end
