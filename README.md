@@ -1,11 +1,11 @@
-# Dragonfly::MongoDataStore
+# Dragonfly::MongoidDataStore
 
-Mongo data store for use with the [Dragonfly](http://github.com/markevans/dragonfly) gem.
+Mongoid data store for use with the [Dragonfly](http://github.com/markevans/dragonfly) gem.
 
 ## Gemfile
 
 ```ruby
-gem 'dragonfly-mongo_data_store'
+gem 'dragonfly-mongoid_data_store'
 ```
 
 ## Usage
@@ -13,34 +13,19 @@ gem 'dragonfly-mongo_data_store'
 Configuration, with default options (remember the require)
 
 ```ruby
-require 'dragonfly/mongo_data_store'
+require 'dragonfly/mongoid_data_store'
 
 Dragonfly.app.configure do
   # ...
 
-  datastore :mongo
+  datastore :mongoid
 
   # ...
 end
 ```
 
-Or with options:
+### Current Authors, Maintainers
+* Nik Petersen
 
-```ruby
-datastore :mongo, host: 'my.host', database: 'my_database'
-```
-
-### Available options
-
-```ruby
-:host              # e.g. 'my.domain'
-:hosts             # for replica sets, e.g. ['n1.mydb.net:27017', 'n2.mydb.net:27017']
-:connection_opts   # hash that passes through to Mongo::Connection or Mongo::ReplSetConnection
-:port              # e.g. 27017
-:database          # defaults to 'dragonfly'
-:username
-:password
-:connection        # use this if you already have a Mongo::Connection object
-:db                # use this if you already have a Mongo::DB object
-```
-
+### Attribution
+This was originally forked from Mark Evan's [dragonfly-mongo_data_store](http://github.com/markevans/dragonfly-mongo_data_store)
