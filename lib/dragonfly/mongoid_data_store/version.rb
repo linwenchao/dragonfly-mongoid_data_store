@@ -1,6 +1,6 @@
 module Dragonfly
-  class MongoDataStore
-    VERSION = "1.0.0"
+  class MongoidDataStore
+    VERSION = "0.0.1"
   end
 end
 
