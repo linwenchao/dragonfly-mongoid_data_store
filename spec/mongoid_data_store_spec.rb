@@ -18,9 +18,10 @@ describe Dragonfly::MongoidDataStore do
   describe "configuring the app" do
     it "can be configured with a symbol" do
       app.configure do
-        datastore :mongo
+        datastore :mongoid
       end
-      app.datastore.should be_a(Dragonfly::MongoidDataStore)
+      
+      expect( app.datastore ).to be_a(Dragonfly::MongoidDataStore)
     end
   end
 
