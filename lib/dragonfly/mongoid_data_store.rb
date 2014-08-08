@@ -2,7 +2,7 @@
 require 'mongoid/grid_fs'
 require 'dragonfly'
 
-Dragonfly::App.register_datastore(:mongo){ Dragonfly::MongoidDataStore }
+Dragonfly::App.register_datastore(:mongoid){ Dragonfly::MongoidDataStore }
 
 module Dragonfly
   class MongoidDataStore
