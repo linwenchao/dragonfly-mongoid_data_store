@@ -10,18 +10,18 @@ module Dragonfly
     include Serializer
 
     def initialize(opts={})
-      #@host            = opts[:host]
-      #@hosts           = opts[:hosts]
-      #@connection_opts = opts[:connection_opts] || {}
-      #@port            = opts[:port]
-      #@database        = opts[:database] || 'dragonfly'
-      #@username        = opts[:username]
-      #@password        = opts[:password]
-      #@connection      = opts[:connection]
-      #@db              = opts[:db]
+      @host            = opts[:host]
+      @hosts           = opts[:hosts]
+      @connection_opts = opts[:connection_opts] || {}
+      @port            = opts[:port]
+      @database        = opts[:database] || 'dragonfly'
+      @username        = opts[:username]
+      @password        = opts[:password]
+      @connection      = opts[:connection]
+      @db              = opts[:db]
     end
 
-    #attr_accessor :host, :hosts, :connection_opts, :port, :database, :username, :password
+    attr_accessor :host, :hosts, :connection_opts, :port, :database, :username, :password
 
     def write(content, opts={})
       ensure_authenticated!
