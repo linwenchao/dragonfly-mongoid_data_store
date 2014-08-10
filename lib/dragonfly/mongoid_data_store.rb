@@ -1,4 +1,4 @@
-#require 'mongo'
+require 'mongo'
 require 'mongoid/grid_fs'
 require 'dragonfly'
 
@@ -49,9 +49,9 @@ module Dragonfly
 
     def connection
       @connection ||= if hosts
-        ::Mongo::ReplSetConnection.new(hosts, connection_opts)
+        Mongo::ReplSetConnection.new(hosts, connection_opts)
       else
-        ::Mongo::Connection.new(host, port, connection_opts)
+        Mongo::Connection.new(host, port, connection_opts)
       end
     end
 
