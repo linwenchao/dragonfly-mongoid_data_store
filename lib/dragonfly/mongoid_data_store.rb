@@ -60,7 +60,7 @@ module Dragonfly
     end
 
     def grid
-      @grid ||= Mongo::Grid.new(db)
+      @grid ||= Mongoid::GridFs.new(db)#Mongo::Grid.new(db)
     end
 
     private
